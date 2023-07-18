@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Training: Codable {
+    let text: String
+    let img: String
+}

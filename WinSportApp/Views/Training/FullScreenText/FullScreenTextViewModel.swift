@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+
+final class FullScreenTextViewModel {
+
+    var training: Training?
+}

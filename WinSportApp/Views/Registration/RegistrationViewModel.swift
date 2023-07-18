@@ -26,8 +26,8 @@ final class RegistrationViewModel {
 
 
 
-    func saveUserModel(userName: String, userWeight: Int, userHeight: Int, userPoints: Int) {
-        let userModel = UserModel(name: userName, weight: userWeight, height: userHeight, points: userPoints)
+    func saveUserModel(userName: String, userWeight: Int, userHeight: Int, userPoints: Int, userStrikes: Int) {
+        let userModel = UserModel(name: userName, weight: userWeight, height: userHeight, points: userPoints, strikes: userStrikes)
         UserSettings.userModel = userModel
     }
 }

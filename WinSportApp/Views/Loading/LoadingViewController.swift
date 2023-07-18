@@ -10,11 +10,7 @@ import UIKit
 
 final class LoadingViewController: UIViewController {
 
-    // MARK: - Private Properties
-    private var timer: Timer!
-    private var progress: Float = 0.0
-    private let totalDuration: TimeInterval = 3.0
-    private let updateInterval: TimeInterval = 0.1
+    private let loadingViewModel = LoadingViewModel()
 
     // MARK: - UIElements
     private lazy var backView: UIImageView = {
@@ -64,38 +60,11 @@ final class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainView()
-        timer = Timer.scheduledTimer(timeInterval: updateInterval,
-                                     target: self,
-                                     selector: #selector(updateProgress),
-                                     userInfo: nil,
-                                     repeats: true)
+        setupViewModel()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        timer?.invalidate()
-    }
-
-
-    // MARK: - Actions
-    @objc private func updateProgress() {
-        progress += Float(updateInterval / totalDuration)
-        loadingView.setProgress(progress, animated: true)
-        loadingInfoLabel.textColor = progress <= 0.5 ? .systemOrange : .white
-        loadingInfoLabel.text = String(Int(progress * 100))  + "%"
-
-        if progress >= 1.0 {
-            timer.invalidate()
-            let userDefaults = UserDefaults.standard
-                    if userDefaults.object(forKey: UserSettings.SettingsCase.userModel.rawValue) != nil {
-                        let mainMenuVC = MainMenuViewController()
-                        mainMenuVC.modalPresentationStyle = .fullScreen
-                        present(mainMenuVC, animated: true)
-                    } else {
-                let registrationVC = RegistrationViewController()
-                registrationVC.modalPresentationStyle = .fullScreen
-                present(registrationVC, animated: true)
-            }
-        }
+        loadingViewModel.stopProgressUpdate()
     }
 
     // MARK: - Private Methods
@@ -130,5 +99,30 @@ final class LoadingViewController: UIViewController {
             loadingInfoLabel.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
             loadingInfoLabel.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor)
         ])
+    }
+
+    private func setupViewModel() {
+        loadingViewModel.updateProgress = { [weak self] progress, infoText in
+            self?.loadingView.setProgress(progress, animated: true)
+            self?.loadingInfoLabel.textColor = progress <= 0.5 ? .systemOrange : .white
+            self?.loadingInfoLabel.text = infoText
+        }
+        loadingViewModel.navigationCompleted = { [weak self] in
+            self?.navigateToNextScreen()
+        }
+        loadingViewModel.startProgressUpdate()
+    }
+
+    private func navigateToNextScreen() {
+        let userDefaults = UserDefaults.standard
+        if userDefaults.object(forKey: UserSettings.SettingsCase.userModel.rawValue) != nil {
+            let mainMenuVC = MainMenuViewController()
+            mainMenuVC.modalPresentationStyle = .fullScreen
+            present(mainMenuVC, animated: true)
+        } else {
+            let registrationVC = RegistrationViewController()
+            registrationVC.modalPresentationStyle = .fullScreen
+            present(registrationVC, animated: true)
+        }
     }
 }

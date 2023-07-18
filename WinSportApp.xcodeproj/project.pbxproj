@@ -9,25 +9,112 @@
 /* Begin PBXBuildFile section */
 		B8913CA22A60162200A164F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8913CA12A60162200A164F4 /* AppDelegate.swift */; };
 		B8913CA42A60162200A164F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8913CA32A60162200A164F4 /* SceneDelegate.swift */; };
-		B8913CA62A60162200A164F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8913CA52A60162200A164F4 /* ViewController.swift */; };
-		B8913CA92A60162200A164F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8913CA72A60162200A164F4 /* Main.storyboard */; };
+		B8913CA62A60162200A164F4 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8913CA52A60162200A164F4 /* RegistrationViewController.swift */; };
 		B8913CAB2A60162300A164F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8913CAA2A60162300A164F4 /* Assets.xcassets */; };
 		B8913CAE2A60162300A164F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8913CAC2A60162300A164F4 /* LaunchScreen.storyboard */; };
+		B8913CB92A601B3C00A164F4 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8913CB82A601B3C00A164F4 /* LoadingViewController.swift */; };
+		B8913CBC2A606C0700A164F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8913CBB2A606C0700A164F4 /* Constants.swift */; };
+		B8913CBF2A607F3900A164F4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8913CBE2A607F3900A164F4 /* UserModel.swift */; };
+		B8913CC12A6081E400A164F4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8913CC02A6081E400A164F4 /* Extensions.swift */; };
+		B8913CC32A60849000A164F4 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8913CC22A60849000A164F4 /* Components.swift */; };
+		B8913CC52A6087DB00A164F4 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8913CC42A6087DB00A164F4 /* MainMenuViewController.swift */; };
+		B8913CC72A6087F800A164F4 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8913CC62A6087F800A164F4 /* UserSettings.swift */; };
+		B8C46D212A614EBA00C777D2 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D202A614EBA00C777D2 /* TrainingViewController.swift */; };
+		B8C46D232A615D3100C777D2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D222A615D3100C777D2 /* SettingsViewController.swift */; };
+		B8C46D252A615D4B00C777D2 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D242A615D4B00C777D2 /* AnalyticsViewController.swift */; };
+		B8C46D272A61CD5900C777D2 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D262A61CD5900C777D2 /* QuestionViewController.swift */; };
+		B8C46D372A61E41300C777D2 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D362A61E41300C777D2 /* RegistrationViewModel.swift */; };
+		B8C46D3A2A62B43C00C777D2 /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D392A62B43C00C777D2 /* LoadingViewModel.swift */; };
+		B8C46D3D2A62BF7B00C777D2 /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D3C2A62BF7B00C777D2 /* MainMenuViewModel.swift */; };
+		B8C46D402A62FFCE00C777D2 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D3F2A62FFCE00C777D2 /* SettingsViewModel.swift */; };
+		B8C46D422A6439E100C777D2 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D412A6439E100C777D2 /* Training.swift */; };
+		B8C46D442A643DEC00C777D2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D432A643DEC00C777D2 /* NetworkManager.swift */; };
+		B8C46D472A64483900C777D2 /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D462A64483900C777D2 /* TrainingViewModel.swift */; };
+		B8C46D4A2A645D0000C777D2 /* FullScreenTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D492A645D0000C777D2 /* FullScreenTextViewController.swift */; };
+		B8C46D4D2A64614500C777D2 /* FullScreenTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D4C2A64614500C777D2 /* FullScreenTextViewModel.swift */; };
+		B8F2B99A2A654339000E98EE /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F2B9992A654339000E98EE /* QuestionViewModel.swift */; };
+		B8F2B99C2A654370000E98EE /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F2B99B2A654370000E98EE /* Response.swift */; };
+		B8F2B99F2A65B094000E98EE /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F2B99E2A65B094000E98EE /* AnalyticsViewModel.swift */; };
+		B8F2B9A12A66A11D000E98EE /* DailyTaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F2B9A02A66A11D000E98EE /* DailyTaskScheduler.swift */; };
+		B8F2B9AA2A66C071000E98EE /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F2B9A92A66C071000E98EE /* NotificationService.swift */; };
+		B8F2B9AE2A66C071000E98EE /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B8F2B9A72A66C071000E98EE /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B8F2B9B52A66C151000E98EE /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = B8F2B9B42A66C151000E98EE /* OneSignal */; };
+		B8F2B9B72A66C151000E98EE /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = B8F2B9B62A66C151000E98EE /* OneSignalExtension */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B8F2B9AC2A66C071000E98EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8913C962A60162200A164F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8F2B9A62A66C071000E98EE;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B8F2B9B22A66C071000E98EE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B8F2B9AE2A66C071000E98EE /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B8913C9E2A60162200A164F4 /* WinSportApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WinSportApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8913CA12A60162200A164F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8913CA32A60162200A164F4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B8913CA52A60162200A164F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B8913CA82A60162200A164F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B8913CA52A60162200A164F4 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		B8913CAA2A60162300A164F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8913CAD2A60162300A164F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8913CAF2A60162300A164F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8913CB82A601B3C00A164F4 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		B8913CBB2A606C0700A164F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B8913CBE2A607F3900A164F4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		B8913CC02A6081E400A164F4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B8913CC22A60849000A164F4 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		B8913CC42A6087DB00A164F4 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		B8913CC62A6087F800A164F4 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		B8C46D202A614EBA00C777D2 /* TrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
+		B8C46D222A615D3100C777D2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B8C46D242A615D4B00C777D2 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
+		B8C46D262A61CD5900C777D2 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		B8C46D362A61E41300C777D2 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		B8C46D392A62B43C00C777D2 /* LoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModel.swift; sourceTree = "<group>"; };
+		B8C46D3C2A62BF7B00C777D2 /* MainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewModel.swift; sourceTree = "<group>"; };
+		B8C46D3F2A62FFCE00C777D2 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		B8C46D412A6439E100C777D2 /* Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
+		B8C46D432A643DEC00C777D2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B8C46D462A64483900C777D2 /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
+		B8C46D492A645D0000C777D2 /* FullScreenTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenTextViewController.swift; sourceTree = "<group>"; };
+		B8C46D4C2A64614500C777D2 /* FullScreenTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenTextViewModel.swift; sourceTree = "<group>"; };
+		B8F2B9992A654339000E98EE /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
+		B8F2B99B2A654370000E98EE /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		B8F2B99E2A65B094000E98EE /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewModel.swift; sourceTree = "<group>"; };
+		B8F2B9A02A66A11D000E98EE /* DailyTaskScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskScheduler.swift; sourceTree = "<group>"; };
+		B8F2B9A22A66BAE3000E98EE /* WinSportApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WinSportApp.entitlements; sourceTree = "<group>"; };
+		B8F2B9A72A66C071000E98EE /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8F2B9A92A66C071000E98EE /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		B8F2B9AB2A66C071000E98EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B8913C9B2A60162200A164F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8F2B9B52A66C151000E98EE /* OneSignal in Frameworks */,
+				B8F2B9B72A66C151000E98EE /* OneSignalExtension in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8F2B9A42A66C071000E98EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				B8913CA02A60162200A164F4 /* WinSportApp */,
+				B8F2B9A82A66C071000E98EE /* OneSignalNotificationServiceExtension */,
 				B8913C9F2A60162200A164F4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				B8913C9E2A60162200A164F4 /* WinSportApp.app */,
+				B8F2B9A72A66C071000E98EE /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,15 +145,152 @@
 		B8913CA02A60162200A164F4 /* WinSportApp */ = {
 			isa = PBXGroup;
 			children = (
-				B8913CA12A60162200A164F4 /* AppDelegate.swift */,
-				B8913CA32A60162200A164F4 /* SceneDelegate.swift */,
-				B8913CA52A60162200A164F4 /* ViewController.swift */,
-				B8913CA72A60162200A164F4 /* Main.storyboard */,
-				B8913CAA2A60162300A164F4 /* Assets.xcassets */,
-				B8913CAC2A60162300A164F4 /* LaunchScreen.storyboard */,
+				B8F2B9A22A66BAE3000E98EE /* WinSportApp.entitlements */,
+				B8913CBD2A606E3300A164F4 /* Models */,
+				B8913CBA2A606BF600A164F4 /* Helpers */,
+				B8913CB52A60180A00A164F4 /* Application */,
+				B8913CB72A601B1900A164F4 /* Views */,
+				B8913CB62A60182700A164F4 /* Config */,
 				B8913CAF2A60162300A164F4 /* Info.plist */,
 			);
 			path = WinSportApp;
+			sourceTree = "<group>";
+		};
+		B8913CB52A60180A00A164F4 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				B8913CA12A60162200A164F4 /* AppDelegate.swift */,
+				B8913CA32A60162200A164F4 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		B8913CB62A60182700A164F4 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				B8913CAA2A60162300A164F4 /* Assets.xcassets */,
+				B8913CAC2A60162300A164F4 /* LaunchScreen.storyboard */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		B8913CB72A601B1900A164F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B8C46D382A62B42300C777D2 /* Loading */,
+				B8C46D352A61E3FC00C777D2 /* Registration */,
+				B8C46D3B2A62BE8400C777D2 /* MainMenu */,
+				B8C46D452A64482500C777D2 /* Training */,
+				B8F2B99D2A65B079000E98EE /* Analytics */,
+				B8F2B9982A654321000E98EE /* Question */,
+				B8C46D3E2A62FFA000C777D2 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B8913CBA2A606BF600A164F4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B8913CBB2A606C0700A164F4 /* Constants.swift */,
+				B8913CC02A6081E400A164F4 /* Extensions.swift */,
+				B8913CC22A60849000A164F4 /* Components.swift */,
+				B8913CC62A6087F800A164F4 /* UserSettings.swift */,
+				B8C46D432A643DEC00C777D2 /* NetworkManager.swift */,
+				B8F2B9A02A66A11D000E98EE /* DailyTaskScheduler.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B8913CBD2A606E3300A164F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B8913CBE2A607F3900A164F4 /* UserModel.swift */,
+				B8C46D412A6439E100C777D2 /* Training.swift */,
+				B8F2B99B2A654370000E98EE /* Response.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B8C46D352A61E3FC00C777D2 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				B8C46D362A61E41300C777D2 /* RegistrationViewModel.swift */,
+				B8913CA52A60162200A164F4 /* RegistrationViewController.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		B8C46D382A62B42300C777D2 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				B8913CB82A601B3C00A164F4 /* LoadingViewController.swift */,
+				B8C46D392A62B43C00C777D2 /* LoadingViewModel.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		B8C46D3B2A62BE8400C777D2 /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				B8C46D3C2A62BF7B00C777D2 /* MainMenuViewModel.swift */,
+				B8913CC42A6087DB00A164F4 /* MainMenuViewController.swift */,
+			);
+			path = MainMenu;
+			sourceTree = "<group>";
+		};
+		B8C46D3E2A62FFA000C777D2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B8C46D3F2A62FFCE00C777D2 /* SettingsViewModel.swift */,
+				B8C46D222A615D3100C777D2 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B8C46D452A64482500C777D2 /* Training */ = {
+			isa = PBXGroup;
+			children = (
+				B8C46D462A64483900C777D2 /* TrainingViewModel.swift */,
+				B8C46D202A614EBA00C777D2 /* TrainingViewController.swift */,
+				B8C46D4B2A64609900C777D2 /* FullScreenText */,
+			);
+			path = Training;
+			sourceTree = "<group>";
+		};
+		B8C46D4B2A64609900C777D2 /* FullScreenText */ = {
+			isa = PBXGroup;
+			children = (
+				B8C46D4C2A64614500C777D2 /* FullScreenTextViewModel.swift */,
+				B8C46D492A645D0000C777D2 /* FullScreenTextViewController.swift */,
+			);
+			path = FullScreenText;
+			sourceTree = "<group>";
+		};
+		B8F2B9982A654321000E98EE /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				B8F2B9992A654339000E98EE /* QuestionViewModel.swift */,
+				B8C46D262A61CD5900C777D2 /* QuestionViewController.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		B8F2B99D2A65B079000E98EE /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				B8F2B99E2A65B094000E98EE /* AnalyticsViewModel.swift */,
+				B8C46D242A615D4B00C777D2 /* AnalyticsViewController.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		B8F2B9A82A66C071000E98EE /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				B8F2B9A92A66C071000E98EE /* NotificationService.swift */,
+				B8F2B9AB2A66C071000E98EE /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,15 +303,38 @@
 				B8913C9A2A60162200A164F4 /* Sources */,
 				B8913C9B2A60162200A164F4 /* Frameworks */,
 				B8913C9C2A60162200A164F4 /* Resources */,
+				B8F2B9B22A66C071000E98EE /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B8F2B9AD2A66C071000E98EE /* PBXTargetDependency */,
+			);
+			name = WinSportApp;
+			packageProductDependencies = (
+				B8F2B9B42A66C151000E98EE /* OneSignal */,
+				B8F2B9B62A66C151000E98EE /* OneSignalExtension */,
+			);
+			productName = WinSportApp;
+			productReference = B8913C9E2A60162200A164F4 /* WinSportApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B8F2B9A62A66C071000E98EE /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8F2B9AF2A66C071000E98EE /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				B8F2B9A32A66C071000E98EE /* Sources */,
+				B8F2B9A42A66C071000E98EE /* Frameworks */,
+				B8F2B9A52A66C071000E98EE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = WinSportApp;
-			productName = WinSportApp;
-			productReference = B8913C9E2A60162200A164F4 /* WinSportApp.app */;
-			productType = "com.apple.product-type.application";
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = B8F2B9A72A66C071000E98EE /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -100,6 +349,9 @@
 					B8913C9D2A60162200A164F4 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
+					B8F2B9A62A66C071000E98EE = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 				};
 			};
 			buildConfigurationList = B8913C992A60162200A164F4 /* Build configuration list for PBXProject "WinSportApp" */;
@@ -111,11 +363,15 @@
 				Base,
 			);
 			mainGroup = B8913C952A60162200A164F4;
+			packageReferences = (
+				B8F2B9B32A66C151000E98EE /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
+			);
 			productRefGroup = B8913C9F2A60162200A164F4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				B8913C9D2A60162200A164F4 /* WinSportApp */,
+				B8F2B9A62A66C071000E98EE /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -127,7 +383,13 @@
 			files = (
 				B8913CAE2A60162300A164F4 /* LaunchScreen.storyboard in Resources */,
 				B8913CAB2A60162300A164F4 /* Assets.xcassets in Resources */,
-				B8913CA92A60162200A164F4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8F2B9A52A66C071000E98EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +400,55 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8913CA62A60162200A164F4 /* ViewController.swift in Sources */,
+				B8C46D3D2A62BF7B00C777D2 /* MainMenuViewModel.swift in Sources */,
+				B8913CC52A6087DB00A164F4 /* MainMenuViewController.swift in Sources */,
+				B8913CBC2A606C0700A164F4 /* Constants.swift in Sources */,
+				B8C46D272A61CD5900C777D2 /* QuestionViewController.swift in Sources */,
+				B8C46D4A2A645D0000C777D2 /* FullScreenTextViewController.swift in Sources */,
+				B8913CC32A60849000A164F4 /* Components.swift in Sources */,
+				B8913CC72A6087F800A164F4 /* UserSettings.swift in Sources */,
+				B8F2B99F2A65B094000E98EE /* AnalyticsViewModel.swift in Sources */,
+				B8913CA62A60162200A164F4 /* RegistrationViewController.swift in Sources */,
 				B8913CA22A60162200A164F4 /* AppDelegate.swift in Sources */,
+				B8C46D472A64483900C777D2 /* TrainingViewModel.swift in Sources */,
+				B8C46D252A615D4B00C777D2 /* AnalyticsViewController.swift in Sources */,
 				B8913CA42A60162200A164F4 /* SceneDelegate.swift in Sources */,
+				B8C46D372A61E41300C777D2 /* RegistrationViewModel.swift in Sources */,
+				B8913CBF2A607F3900A164F4 /* UserModel.swift in Sources */,
+				B8C46D442A643DEC00C777D2 /* NetworkManager.swift in Sources */,
+				B8F2B9A12A66A11D000E98EE /* DailyTaskScheduler.swift in Sources */,
+				B8C46D3A2A62B43C00C777D2 /* LoadingViewModel.swift in Sources */,
+				B8C46D422A6439E100C777D2 /* Training.swift in Sources */,
+				B8913CB92A601B3C00A164F4 /* LoadingViewController.swift in Sources */,
+				B8C46D212A614EBA00C777D2 /* TrainingViewController.swift in Sources */,
+				B8913CC12A6081E400A164F4 /* Extensions.swift in Sources */,
+				B8C46D232A615D3100C777D2 /* SettingsViewController.swift in Sources */,
+				B8C46D402A62FFCE00C777D2 /* SettingsViewModel.swift in Sources */,
+				B8F2B99A2A654339000E98EE /* QuestionViewModel.swift in Sources */,
+				B8C46D4D2A64614500C777D2 /* FullScreenTextViewModel.swift in Sources */,
+				B8F2B99C2A654370000E98EE /* Response.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8F2B9A32A66C071000E98EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8F2B9AA2A66C071000E98EE /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		B8913CA72A60162200A164F4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8913CA82A60162200A164F4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		B8F2B9AD2A66C071000E98EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8F2B9A62A66C071000E98EE /* OneSignalNotificationServiceExtension */;
+			targetProxy = B8F2B9AC2A66C071000E98EE /* PBXContainerItemProxy */;
 		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
 		B8913CAC2A60162300A164F4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -283,8 +577,10 @@
 		B8913CB32A60162300A164F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WinSportApp/WinSportApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q5C6FH53V7;
@@ -292,9 +588,9 @@
 				INFOPLIST_FILE = WinSportApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,17 +598,22 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = VoidAsterisk.WinSportApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		B8913CB42A60162300A164F4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WinSportApp/WinSportApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q5C6FH53V7;
@@ -320,9 +621,9 @@
 				INFOPLIST_FILE = WinSportApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,6 +631,59 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = VoidAsterisk.WinSportApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B8F2B9B02A66C071000E98EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q5C6FH53V7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VoidAsterisk.WinSportApp.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B8F2B9B12A66C071000E98EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q5C6FH53V7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VoidAsterisk.WinSportApp.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -357,7 +711,40 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		B8F2B9AF2A66C071000E98EE /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8F2B9B02A66C071000E98EE /* Debug */,
+				B8F2B9B12A66C071000E98EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B8F2B9B32A66C151000E98EE /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B8F2B9B42A66C151000E98EE /* OneSignal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8F2B9B32A66C151000E98EE /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignal;
+		};
+		B8F2B9B62A66C151000E98EE /* OneSignalExtension */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8F2B9B32A66C151000E98EE /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalExtension;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B8913C962A60162200A164F4 /* Project object */;
 }

@@ -7,9 +7,9 @@
 
 import UIKit
 
-class FullScreenTextViewController: UIViewController {
+final class FullScreenTextViewController: UIViewController {
 
-    var training: Training!
+    var fullScreenTextViewModel: FullScreenTextViewModel?
 
     private lazy var backView: UIImageView = {
         Components.setupCustomBackground()
@@ -34,7 +34,6 @@ class FullScreenTextViewController: UIViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .clear
         textView.textColor = .white
-        textView.text = training.text
         textView.font = .systemFont(ofSize: 24)
         return textView
     }()
@@ -77,7 +76,9 @@ class FullScreenTextViewController: UIViewController {
     }
 
     private func setupTextView() {
-        trainingTextView.text = training.text
+        if let trainingText = fullScreenTextViewModel?.training?.text {
+            trainingTextView.text = trainingText
+        }
     }
 
     // MARK: - Actions

@@ -7,9 +7,6 @@
 
 import UIKit
 
-final class MainMenuViewModel {
-    let targetPoints = 25_000
-}
 
 final class MainMenuViewController: UIViewController {
 
@@ -33,19 +30,20 @@ final class MainMenuViewController: UIViewController {
 
     private lazy var winLabel: UILabel = {
         Components.setupCustomLabel(withText: "WIN",
-                                           color: UIColor.systemOrange,
-                                           size: 20)
+                                    color: UIColor.systemOrange,
+                                    size: 20)
     }()
 
     private lazy var sportLabel: UILabel = {
         Components.setupCustomLabel(withText: "SPORT",
-                                           color: UIColor.white,
-                                           size: 20)
+                                    color: UIColor.white,
+                                    size: 20)
     }()
 
     private lazy var buttonsStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [trainingButton,
                                                        analyticsButton,
+                                                       questionButton,
                                                        settingsButton])
         stackView.spacing = 10
         stackView.axis = .vertical
@@ -71,6 +69,14 @@ final class MainMenuViewController: UIViewController {
         return button
     }()
 
+    private lazy var questionButton: UIButton = {
+        let button = Components.setupCustomButton(withTitle: "ВОПРОС ТРЕНЕРУ")
+        button.addTarget(self,
+                         action: #selector(questionButtonTapped),
+                         for: .touchUpInside)
+        return button
+    }()
+
     private lazy var settingsButton: UIButton = {
         let button = Components.setupCustomButton(withTitle: "НАСТРОЙКИ")
         button.addTarget(self,
@@ -81,8 +87,8 @@ final class MainMenuViewController: UIViewController {
 
     private lazy var dayTargetLabel: UILabel = {
         Components.setupCustomLabel(withText: "ЦЕЛЬ НА ДЕНЬ:",
-                                           color: UIColor.white,
-                                           size: 30)
+                                    color: UIColor.white,
+                                    size: 30)
     }()
 
     private lazy var targetPointsStack: UIStackView = {
@@ -95,14 +101,14 @@ final class MainMenuViewController: UIViewController {
 
     private lazy var pointsAmountLabel: UILabel = {
         Components.setupCustomLabel(withText: mainMenuVM.targetPoints.description,
-                                           color: UIColor.orange,
-                                           size: 30)
+                                    color: UIColor.orange,
+                                    size: 30)
     }()
 
     private lazy var pointsTextLabel: UILabel = {
         Components.setupCustomLabel(withText: "POINTS",
-                                           color: UIColor.white,
-                                           size: 30)
+                                    color: UIColor.white,
+                                    size: 30)
     }()
 
     private lazy var progressView: UIProgressView = {
@@ -131,6 +137,10 @@ final class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateProgressView()
     }
 
@@ -191,13 +201,9 @@ final class MainMenuViewController: UIViewController {
     }
 
     private func updateProgressView() {
-        if let userModel = UserSettings.userModel {
-            let userPoints = userModel.points
-            userPointsLabel.textColor = userPoints > (mainMenuVM.targetPoints / 2) ? .white : .systemOrange
-            let progress = Float(userPoints) / Float(mainMenuVM.targetPoints)
-            progressView.setProgress(progress, animated: true)
-            userPointsLabel.text = "\(userPoints)"
-        }
+        userPointsLabel.text = "\(mainMenuVM.userPoints)"
+        userPointsLabel.textColor = mainMenuVM.userPoints > (mainMenuVM.targetPoints / 2) ? .white : .systemOrange
+        progressView.setProgress(mainMenuVM.progress, animated: true)
     }
 
     // MARK: - Actions
@@ -211,6 +217,12 @@ final class MainMenuViewController: UIViewController {
         let analyticsVC = AnalyticsViewController()
         analyticsVC.modalPresentationStyle = .fullScreen
         present(analyticsVC, animated: true)
+    }
+
+    @objc private func questionButtonTapped() {
+        let questionVC = QuestionViewController()
+        questionVC.modalPresentationStyle = .fullScreen
+        present(questionVC, animated: true)
     }
 
     @objc private func settingsButtonTapped() {

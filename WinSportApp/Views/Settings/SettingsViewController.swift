@@ -6,14 +6,14 @@
 //
 
 import UIKit
-import UserNotifications
 
-class SettingsViewController: UIViewController {
 
-    private var pushNotificationsIsOn = false
-    private let notificationCenter = UNUserNotificationCenter.current()
+final class SettingsViewController: UIViewController {
 
-    // MARK: - UIElements
+    private let settingsViewModel = SettingsViewModel()
+
+    // MARK: - UI Elements
+
     private lazy var backView: UIImageView = {
         Components.setupCustomBackground()
     }()
@@ -43,7 +43,7 @@ class SettingsViewController: UIViewController {
                                            color: UIColor.white,
                                            size: 20)
     }()
-    
+
     private lazy var cancelButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
@@ -66,7 +66,7 @@ class SettingsViewController: UIViewController {
 
     private lazy var notificationSwitch: UISwitch = {
         let switchControl = UISwitch()
-        switchControl.isOn = pushNotificationsIsOn
+        switchControl.isOn = settingsViewModel.pushNotificationsIsOn
         switchControl.translatesAutoresizingMaskIntoConstraints = false
         switchControl.onTintColor = .orange
         switchControl.thumbTintColor = .white
@@ -102,12 +102,14 @@ class SettingsViewController: UIViewController {
     }()
 
     // MARK: - View Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainView()
     }
 
     // MARK: - Private Methods
+
     private func setupMainView() {
         addSubviews()
         setupConstraints()
@@ -152,40 +154,22 @@ class SettingsViewController: UIViewController {
     }
 
     // MARK: - Actions
+
     @objc private func notificationSwitchValueChanged() {
-        if notificationSwitch.isOn {
-            requestNotificationAuthorization()
-            pushNotificationsIsOn.toggle()
-        } else {
-            disableNotifications()
-            pushNotificationsIsOn.toggle()
-        }
-    }
-
-    private func requestNotificationAuthorization() {
-        self.notificationCenter.requestAuthorization(options: [.alert, .sound, .alert]) { (granted, error) in
-            guard granted else { return }
-            self.notificationCenter.getNotificationSettings { (settings) in
-                guard settings.authorizationStatus == .authorized else { return }
-            }
-        }
-    }
-
-    private func disableNotifications() {
-        self.notificationCenter.removeAllDeliveredNotifications()
-        self.notificationCenter.removeAllPendingNotificationRequests()
+        settingsViewModel.pushNotificationsIsOn.toggle()
+        settingsViewModel.updateNotificationSettings()
     }
 
     @objc private func clearUserDefaultsButtonTapped() {
         showAlert()
     }
 
-
     @objc private func cancelButtonTapped() {
         dismiss(animated: true, completion: nil)
     }
 
     // MARK: - Show Alert
+
     private func showAlert() {
         let alertController = UIAlertController(title: "Подтверждение",
                                                 message: "Вы уверены, что хотите очистить данные?",
@@ -196,7 +180,7 @@ class SettingsViewController: UIViewController {
         let clearAction = UIAlertAction(title: "Очистить",
                                         style: .destructive) { _ in
             UserDefaults.standard.removeObject(forKey: key)
-            self.disableNotifications()
+            self.settingsViewModel.disableNotifications()
             self.dismiss(animated: true, completion: nil)
         }
 

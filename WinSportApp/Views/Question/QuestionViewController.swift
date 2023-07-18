@@ -7,7 +7,9 @@
 
 import UIKit
 
-class QuestionViewController: UIViewController {
+final class QuestionViewController: UIViewController {
+
+    private let questionViewModel = QuestionViewModel()
 
     private lazy var backView: UIImageView = {
         Components.setupCustomBackground()
@@ -37,13 +39,13 @@ class QuestionViewController: UIViewController {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.tintColor = .white
-        button.addTarget(self,
-                         action: #selector(cancelButtonTapped),
-                         for: .touchUpInside)
         button.clipsToBounds = true
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self,
+                         action: #selector(cancelButtonTapped),
+                         for: .touchUpInside)
         return button
     }()
 
@@ -54,26 +56,49 @@ class QuestionViewController: UIViewController {
     }()
 
     private lazy var questionTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Введите вопрос"
-        textField.borderStyle = .roundedRect
+        let textField = Components.setupCustomTextField(withPlaceholder: "Введите вопрос")
+        textField.rightViewMode = .always
+
+        let sendQuestionButton = UIButton(type: .custom)
+        sendQuestionButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        sendQuestionButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        sendQuestionButton.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+        sendQuestionButton.translatesAutoresizingMaskIntoConstraints = false
+        sendQuestionButton.tintColor = .white
+
+        sendQuestionButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
+
+        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        rightView.addSubview(sendQuestionButton)
+
+        sendQuestionButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            sendQuestionButton.topAnchor.constraint(equalTo: rightView.topAnchor),
+            sendQuestionButton.leadingAnchor.constraint(equalTo: rightView.leadingAnchor),
+            sendQuestionButton.trailingAnchor.constraint(equalTo: rightView.trailingAnchor, constant: -24),
+            sendQuestionButton.bottomAnchor.constraint(equalTo: rightView.bottomAnchor)
+        ])
+
+        textField.rightView = rightView
+
         return textField
     }()
 
-    private lazy var submitButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Отправить", for: .normal)
-        button.addTarget(self, action: #selector(submitButtonTapped), for: .touchUpInside)
-        return button
+    private lazy var blurView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        view.layer.cornerRadius = 8
+        return view
     }()
 
     private lazy var responseLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
-        label.textAlignment = .center
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.numberOfLines = .max
+        label.textAlignment = .left
         return label
     }()
 
@@ -95,9 +120,8 @@ class QuestionViewController: UIViewController {
         view.addSubview(winSportStack)
         view.addSubview(questionLabel)
         view.addSubview(questionTextField)
-        view.addSubview(submitButton)
-        view.addSubview(responseLabel)
-
+        view.addSubview(blurView)
+        blurView.addSubview(responseLabel)
     }
 
     private func setupConstraints() {
@@ -116,15 +140,19 @@ class QuestionViewController: UIViewController {
             questionLabel.topAnchor.constraint(equalTo: winLabel.bottomAnchor, constant: 36),
             questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            questionTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            questionTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            questionTextField.widthAnchor.constraint(equalToConstant: 200),
+            questionTextField.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 16),
+            questionTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            questionTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            questionTextField.heightAnchor.constraint(equalToConstant: 80),
 
-            submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            submitButton.topAnchor.constraint(equalTo: questionTextField.bottomAnchor, constant: 16),
+            blurView.topAnchor.constraint(equalTo: questionTextField.bottomAnchor, constant: 16),
+            blurView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            blurView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            blurView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
 
-            responseLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            responseLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 16)
+            responseLabel.topAnchor.constraint(equalTo: blurView.topAnchor, constant: 16),
+            responseLabel.leadingAnchor.constraint(equalTo: blurView.leadingAnchor, constant: 16),
+            responseLabel.trailingAnchor.constraint(equalTo: blurView.trailingAnchor, constant: -16),
         ])
     }
 
@@ -133,57 +161,22 @@ class QuestionViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    private func generateQuestionID() -> String {
-        return UUID().uuidString
-    }
-
-    // MARK: - Actions
-    @objc private func submitButtonTapped() {
+    @objc private func playButtonTapped() {
         guard let question = questionTextField.text else { return }
-        let questionID = generateQuestionID()
-        sendQuestionToServer(question: question, questionID: questionID)
+        let questionID = questionViewModel.generateQuestionID()
+        questionViewModel.sendQuestion(question: question, questionID: questionID) {_ in }
+
         responseLabel.text = "Ответ обрабатывается"
-        fetchResponseFromServer(questionID: questionID)
-    }
 
-    private func sendQuestionToServer(question: String, questionID: String) {
-        let urlString = "http://84.38.181.162/ios/ask.php"
-        guard let url = URL(string: urlString) else { return }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        let parameters = ["ask": question, "id": questionID]
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: [])
-            request.httpBody = jsonData
-        } catch {
-            print("Error serializing parameters: \(error)")
-            return
-        }
-
-//        URLSession.shared.dataTask(with: request) { data, _, error in
-//            // Обработка ответа или ошибки
-//        }.resume()
-    }
-
-
-    private func fetchResponseFromServer(questionID: String) {
-                let urlString = "http://84.38.181.162/ios/response.php?id=\(questionID)"
-//        let urlString = "http://84.38.181.162/ios/response.php?id=1"
-
-        NetworkManager.shared.fetchData(Response.self, from: urlString) { [self] result in
-            switch result {
-            case .success(let response):
-                responseLabel.text = response.response
-            case .failure(let error):
-                print(error.localizedDescription)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.questionViewModel.fetchResponse(questionID: questionID) { [self] result in
+                switch result {
+                case .success(let response):
+                    responseLabel.text = (questionTextField.text ?? "") + "\nОТВЕТ:\n" + response
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
         }
     }
-}
-
-struct Response: Codable {
-    let response: String
 }

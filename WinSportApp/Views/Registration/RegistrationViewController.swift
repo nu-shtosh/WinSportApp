@@ -146,7 +146,8 @@ final class RegistrationViewController: UIViewController {
                     registrationVM.saveUserModel(userName: userName,
                                                  userWeight: userWeight,
                                                  userHeight: userHeight,
-                                                 userPoints: 0)
+                                                 userPoints: 0,
+                                                 userStrikes: 0)
                     clearTextFields()
                     navigateToNextScreen()
                 } else {
