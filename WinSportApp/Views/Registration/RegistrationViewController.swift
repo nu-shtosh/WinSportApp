@@ -174,7 +174,7 @@ private extension RegistrationViewController {
             startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             startButton.topAnchor.constraint(equalTo: textFieldsStack.bottomAnchor,
                                              constant: Constants.sixteen),
-            startButton.widthAnchor.constraint(equalToConstant: Constants.sixteen0),
+            startButton.widthAnchor.constraint(equalToConstant: 160),
             startButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }

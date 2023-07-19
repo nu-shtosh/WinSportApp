@@ -59,7 +59,7 @@ enum Constants {
     static let askUrl = "http://84.38.181.Constants.sixteen2/ios/ask.php"
     static let responseUrl = "http://84.38.181.Constants.sixteen2/ios/response.php?id="
     static let eight = 8.0
-    static let sixteen = Constants.sixteen.0
+    static let sixteen = 16.0
     static let forty = 40.0
 }
 
