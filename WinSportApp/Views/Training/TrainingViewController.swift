@@ -10,7 +10,11 @@ import UIKit
 
 final class TrainingViewController: UIViewController {
 
+    // MARK: - View Model
+
     private var trainingViewModel = TrainingViewModel()
+
+    // MARK: - UIElements
 
     private lazy var backView: UIImageView = {
         Components.setupCustomBackground()
@@ -114,6 +118,35 @@ final class TrainingViewController: UIViewController {
         trainingViewModel.fetchTrainingData()
     }
 
+    // MARK: - Actions
+    
+    @objc private func cancelButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+
+    @objc private func fullTextButtonTapped() {
+        let fullScreenTextVC = trainingViewModel.createFullScreenTextViewModel()
+        present(fullScreenTextVC, animated: true)
+
+    }
+}
+
+extension TrainingViewController: TrainingViewModelDelegate {
+    func didFetchTrainingData(_ training: Training) {
+        trainingViewModel.training = training
+        trainingTextLabel.text = training.text
+        fetchImage(fromURL: training.img)
+    }
+
+    func didFailFetchingTrainingData(with error: Error) {
+        print(error.localizedDescription)
+    }
+}
+
+// MARK: - Private Methods
+
+private extension TrainingViewController {
+    
     private func setupMainView() {
         addSubviews()
         setupConstraints()
@@ -170,42 +203,14 @@ final class TrainingViewController: UIViewController {
         ])
     }
 
-    // MARK: - Actions
-    @objc private func cancelButtonTapped() {
-        dismiss(animated: true, completion: nil)
-    }
-
-    @objc private func fullTextButtonTapped() {
-        let fullScreenTextVC = FullScreenTextViewController()
-        let fullScreenTextVM = FullScreenTextViewModel()
-
-        if let training = trainingViewModel.training {
-            fullScreenTextVM.training = training
-            fullScreenTextVC.fullScreenTextViewModel = fullScreenTextVM
-            present(fullScreenTextVC, animated: true)
-        }
-    }
-}
-
-extension TrainingViewController: TrainingViewModelDelegate {
-    func didFetchTrainingData(_ training: Training) {
-        trainingViewModel.training = training
-        trainingTextLabel.text = training.text
-        fetchImage(fromURL: training.img)
-    }
-
-    func didFailFetchingTrainingData(with error: Error) {
-        print(error.localizedDescription)
-    }
-
     private func fetchImage(fromURL: String) {
-        NetworkManager.shared.fetchImage(from: URL(string: fromURL)) { [weak self] result in
+        trainingViewModel.fetchImage(fromURL: fromURL) { [self] result in
             switch result {
             case .success(let imageData):
-                self?.trainingImageView.image = UIImage(data: imageData)
-                self?.activityIndicator.stopAnimating()
+                trainingImageView.image = UIImage(data: imageData)
+                activityIndicator.stopAnimating()
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
             }
         }
     }

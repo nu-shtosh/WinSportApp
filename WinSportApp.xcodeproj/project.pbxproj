@@ -223,8 +223,8 @@
 		B8C46D382A62B42300C777D2 /* Loading */ = {
 			isa = PBXGroup;
 			children = (
-				B8913CB82A601B3C00A164F4 /* LoadingViewController.swift */,
 				B8C46D392A62B43C00C777D2 /* LoadingViewModel.swift */,
+				B8913CB82A601B3C00A164F4 /* LoadingViewController.swift */,
 			);
 			path = Loading;
 			sourceTree = "<group>";

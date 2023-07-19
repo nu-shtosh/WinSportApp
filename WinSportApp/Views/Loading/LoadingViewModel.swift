@@ -13,8 +13,6 @@ final class LoadingViewModel {
     private var progress: Float = 0.0
     private let totalDuration: TimeInterval = 3.0
     private let updateInterval: TimeInterval = 0.1
-    private let scheduler = DailyTaskScheduler()
-
 
     var updateProgress: ((Float, String) -> Void)?
     var navigationCompleted: (() -> Void)?

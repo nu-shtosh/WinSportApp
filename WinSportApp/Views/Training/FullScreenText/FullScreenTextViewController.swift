@@ -9,7 +9,11 @@ import UIKit
 
 final class FullScreenTextViewController: UIViewController {
 
+    // MARK: - View Model
+
     var fullScreenTextViewModel: FullScreenTextViewModel?
+
+    // MARK: - UIElements
 
     private lazy var backView: UIImageView = {
         Components.setupCustomBackground()
@@ -40,13 +44,23 @@ final class FullScreenTextViewController: UIViewController {
 
 
     // MARK: - View Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainView()
         setupTextView()
     }
 
-    // MARK: - Private Methods
+    // MARK: - Actions
+    
+    @objc private func cancelButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - Private Methods
+
+private extension FullScreenTextViewController {
     private func setupMainView() {
         addSubviews()
         setupConstraints()
@@ -79,10 +93,5 @@ final class FullScreenTextViewController: UIViewController {
         if let trainingText = fullScreenTextViewModel?.training?.text {
             trainingTextView.text = trainingText
         }
-    }
-
-    // MARK: - Actions
-    @objc private func cancelButtonTapped() {
-        dismiss(animated: true, completion: nil)
     }
 }

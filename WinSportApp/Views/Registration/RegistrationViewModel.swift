@@ -9,13 +9,15 @@ import UIKit
 
 
 final class RegistrationViewModel {
+    private let scheduler = DailyTaskScheduler()
+
     func validateFields(fields: [(UITextField, String)]) -> Bool {
         var isValid = true
 
-        for (textField, placeholderAfter) in fields {
+        for (textField, warningPlaceholder) in fields {
             if let text = textField.text, text.isEmpty {
                 textField.text = ""
-                textField.placeholder = placeholderAfter
+                textField.placeholder = warningPlaceholder
                 textField.shake()
                 isValid = false
             }

@@ -9,7 +9,11 @@ import UIKit
 
 final class QuestionViewController: UIViewController {
 
+    // MARK: - View Model
+
     private let questionViewModel = QuestionViewModel()
+
+    // MARK: - UIElements
 
     private lazy var backView: UIImageView = {
         Components.setupCustomBackground()
@@ -80,7 +84,6 @@ final class QuestionViewController: UIViewController {
         ])
 
         textField.rightView = rightView
-
         return textField
     }()
 
@@ -103,12 +106,39 @@ final class QuestionViewController: UIViewController {
     }()
 
     // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainView()
     }
 
-    // MARK: - Private Methods
+    // MARK: - Actions
+
+    @objc private func cancelButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+
+    @objc private func playButtonTapped() {
+        guard let question = questionTextField.text else { return }
+        let questionID = questionViewModel.generateQuestionID()
+        questionViewModel.sendQuestion(question: question, questionID: questionID) {_ in }
+
+        responseLabel.text = "Ответ обрабатывается"
+
+        self.questionViewModel.fetchResponse(questionID: questionID) { [self] result in
+            switch result {
+            case .success(let response):
+                responseLabel.text = (questionTextField.text ?? "") + "\nОТВЕТ:\n" + response
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
+// MARK: - Private Methods
+
+private extension QuestionViewController {
     private func setupMainView() {
         addSubviews()
         setupConstraints()
@@ -155,28 +185,13 @@ final class QuestionViewController: UIViewController {
             responseLabel.trailingAnchor.constraint(equalTo: blurView.trailingAnchor, constant: -16),
         ])
     }
+}
 
-    // MARK: - Actions
-    @objc private func cancelButtonTapped() {
-        dismiss(animated: true, completion: nil)
-    }
+// MARK: - Touches Began
 
-    @objc private func playButtonTapped() {
-        guard let question = questionTextField.text else { return }
-        let questionID = questionViewModel.generateQuestionID()
-        questionViewModel.sendQuestion(question: question, questionID: questionID) {_ in }
-
-        responseLabel.text = "Ответ обрабатывается"
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.questionViewModel.fetchResponse(questionID: questionID) { [self] result in
-                switch result {
-                case .success(let response):
-                    responseLabel.text = (questionTextField.text ?? "") + "\nОТВЕТ:\n" + response
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        }
+extension QuestionViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super .touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
 }

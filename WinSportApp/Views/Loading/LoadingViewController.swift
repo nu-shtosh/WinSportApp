@@ -10,9 +10,12 @@ import UIKit
 
 final class LoadingViewController: UIViewController {
 
+    // MARK: - View Model
+
     private let loadingViewModel = LoadingViewModel()
 
     // MARK: - UIElements
+
     private lazy var backView: UIImageView = {
         Components.setupCustomBackground()
     }()
@@ -57,6 +60,7 @@ final class LoadingViewController: UIViewController {
     }()
 
     // MARK: - View Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainView()
@@ -66,8 +70,12 @@ final class LoadingViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         loadingViewModel.stopProgressUpdate()
     }
+}
 
-    // MARK: - Private Methods
+// MARK: - Private Methods
+
+private extension LoadingViewController {
+    
     private func setupMainView() {
         addSubviews()
         setupConstraints()

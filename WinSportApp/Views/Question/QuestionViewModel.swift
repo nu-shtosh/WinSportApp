@@ -44,9 +44,7 @@ final class QuestionViewModel {
                                         from: urlString) { result in
             switch result {
             case .success(let response):
-                do {
-                    completion(.success(response.response))
-                }
+                completion(.success(response.response))
             case .failure(let error):
                 completion(.failure(error))
             }

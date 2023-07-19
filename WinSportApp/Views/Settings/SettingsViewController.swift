@@ -10,6 +10,8 @@ import UIKit
 
 final class SettingsViewController: UIViewController {
 
+    // MARK: - View Model
+
     private let settingsViewModel = SettingsViewModel()
 
     // MARK: - UI Elements

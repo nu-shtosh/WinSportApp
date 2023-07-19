@@ -10,9 +10,12 @@ import UIKit
 
 final class RegistrationViewController: UIViewController {
 
-    private let registrationVM = RegistrationViewModel()
+    // MARK: - View Model
+
+    private let registrationViewModel = RegistrationViewModel()
 
     // MARK: - UI Elements
+
     private lazy var backView: UIImageView = {
         Components.setupCustomBackground()
     }()
@@ -61,15 +64,19 @@ final class RegistrationViewController: UIViewController {
     }()
 
     private lazy var nameTextField: UITextField = {
-        Components.setupCustomTextField(withPlaceholder: "ИМЯ")
+       Components.setupCustomTextField(withPlaceholder: "ИМЯ")
     }()
 
     private lazy var weightTextField: UITextField = {
-        Components.setupCustomTextField(withPlaceholder: "ВЕС")
+        let textField = Components.setupCustomTextField(withPlaceholder: "ВЕС")
+        textField.keyboardType = .numberPad
+        return textField
     }()
 
     private lazy var heightTextField: UITextField = {
-        Components.setupCustomTextField(withPlaceholder: "РОСТ")
+        let textField = Components.setupCustomTextField(withPlaceholder: "РОСТ")
+        textField.keyboardType = .numberPad
+        return textField
     }()
 
     private lazy var startButton: UIButton = {
@@ -81,12 +88,53 @@ final class RegistrationViewController: UIViewController {
     }()
 
     // MARK: - View Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainView()
     }
 
-    // MARK: - Private Methods
+    // MARK: - Actions
+
+    @objc private func startButtonTapped() {
+        guard let userName = nameTextField.text?.trimmingCharacters(in: .whitespaces),
+              let userWeightString = weightTextField.text,
+              let userHeightString = heightTextField.text else { return }
+
+        let fields = [
+            (nameTextField, "ВВЕДИТЕ ИМЯ"),
+            (weightTextField, "ВВЕДИТЕ ВЕС"),
+            (heightTextField, "ВВЕДИТЕ РОСТ")
+        ]
+
+        if registrationViewModel.validateFields(fields: fields) {
+            if let userWeight = Int(userWeightString) {
+                if let userHeight = Int(userHeightString) {
+                    registrationViewModel.saveUserModel(userName: userName,
+                                                 userWeight: userWeight,
+                                                 userHeight: userHeight,
+                                                 userPoints: 0,
+                                                 userStrikes: 0)
+                    clearTextFields()
+                    navigateToNextScreen()
+                } else {
+                    heightTextField.text = ""
+                    heightTextField.placeholder = "ВВЕДИТЕ РОСТ"
+                    heightTextField.shake()
+                }
+            } else {
+                weightTextField.text = ""
+                weightTextField.placeholder = "ВВЕДИТЕ ВЕС"
+                weightTextField.shake()
+            }
+        }
+    }
+}
+
+// MARK: - Private Methods
+
+private extension RegistrationViewController {
+    
     private func setupMainView() {
         addSubviews()
         setupConstraints()
@@ -127,42 +175,6 @@ final class RegistrationViewController: UIViewController {
         ])
     }
 
-    // MARK: - Actions
-
-    @objc private func startButtonTapped() {
-        guard let userName = nameTextField.text?.trimmingCharacters(in: .whitespaces),
-              let userWeightString = weightTextField.text,
-              let userHeightString = heightTextField.text else { return }
-
-        let fields = [
-            (nameTextField, "ВВЕДИТЕ ИМЯ"),
-            (weightTextField, "ВВЕДИТЕ ВЕС"),
-            (heightTextField, "ВВЕДИТЕ РОСТ")
-        ]
-
-        if registrationVM.validateFields(fields: fields) {
-            if let userWeight = Int(userWeightString) {
-                if let userHeight = Int(userHeightString) {
-                    registrationVM.saveUserModel(userName: userName,
-                                                 userWeight: userWeight,
-                                                 userHeight: userHeight,
-                                                 userPoints: 0,
-                                                 userStrikes: 0)
-                    clearTextFields()
-                    navigateToNextScreen()
-                } else {
-                    heightTextField.text = ""
-                    heightTextField.placeholder = "ВВЕДИТЕ РОСТ"
-                    heightTextField.shake()
-                }
-            } else {
-                weightTextField.text = ""
-                weightTextField.placeholder = "ВВЕДИТЕ ВЕС"
-                weightTextField.shake()
-            }
-        }
-    }
-
     private func clearTextFields() {
         nameTextField.text = ""
         weightTextField.text = ""
@@ -173,5 +185,14 @@ final class RegistrationViewController: UIViewController {
         let mainMenuVC = MainMenuViewController()
         mainMenuVC.modalPresentationStyle = .fullScreen
         present(mainMenuVC, animated: true)
+    }
+}
+
+// MARK: - Touches Began
+
+extension RegistrationViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super .touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
 }

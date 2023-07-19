@@ -9,8 +9,12 @@ import UIKit
 
 
 final class AnalyticsViewController: UIViewController {
-    
-    private var analyticsVM = AnalyticsViewModel()
+
+    // MARK: - View Model
+
+    private var analyticsViewModel = AnalyticsViewModel()
+
+    // MARK: - UIElements
 
     private lazy var backView: UIImageView = {
         Components.setupCustomBackground()
@@ -77,12 +81,14 @@ final class AnalyticsViewController: UIViewController {
     private lazy var distanceTextField: UITextField = {
         let textField = Components.setupCustomTextField(withPlaceholder: "РАССТОЯНИЕ (КМ)")
         textField.textAlignment = .center
+        textField.keyboardType = .numberPad
         return textField
     }()
 
     private lazy var squatsTextField: UITextField = {
         let textField = Components.setupCustomTextField(withPlaceholder: "ПРИСЕДАНИЯ (РАЗ)")
         textField.textAlignment = .center
+        textField.keyboardType = .numberPad
         return textField
     }()
 
@@ -102,7 +108,7 @@ final class AnalyticsViewController: UIViewController {
     }()
 
     private lazy var multiplierLabel: UILabel = {
-        Components.setupCustomLabel(withText: analyticsVM.userStrikes.description + "X",
+        Components.setupCustomLabel(withText: analyticsViewModel.userStrikes.description + "X",
                                            color: UIColor.white,
                                            size: 50)
     }()
@@ -110,7 +116,7 @@ final class AnalyticsViewController: UIViewController {
     private lazy var enterDataButton: UIButton = {
         let button = Components.setupCustomButton(withTitle: "ВНЕСТИ")
         button.addTarget(self,
-                         action: #selector(enterDataButtonTupped),
+                         action: #selector(enterDataButtonTapped),
                          for: .touchUpInside)
         return button
     }()
@@ -136,6 +142,7 @@ final class AnalyticsViewController: UIViewController {
     }()
 
     // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainView()
@@ -146,8 +153,42 @@ final class AnalyticsViewController: UIViewController {
         updateProgressView()
     }
 
+    // MARK: - Actions
+    @objc private func cancelButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
 
-    // MARK: - Private Methods
+    @objc private func enterDataButtonTapped() {
+
+        let fields = [(squatsTextField, "ВВЕДИТЕ ПРИСЕДАНИЯ"),
+                      (distanceTextField, "ВВЕДИТЕ РАССТОЯНИЕ")]
+
+        let isValidate = analyticsViewModel.validateFields(fields: fields)
+
+        guard let squats = squatsTextField.text, let squats = Int(squats),
+              let distance = distanceTextField.text, let distance = Int(distance) else { return }
+
+        if isValidate {
+            let userWeight = analyticsViewModel.userWeight
+            
+            analyticsViewModel.userPoints += analyticsViewModel.countPoints(withSquats: squats,
+                                                                            distance: distance,
+                                                                            andUserWeight: userWeight)
+            analyticsViewModel.userStrikes += 1
+            analyticsViewModel.saveUserModel(userName: UserSettings.userModel.name,
+                                             userWeight: UserSettings.userModel.weight,
+                                             userHeight: UserSettings.userModel.height,
+                                             userPoints: analyticsViewModel.userPoints,
+                                             userStrike: analyticsViewModel.userStrikes)
+            updateMultiplierLabel()
+            updateProgressView()
+        }
+    }
+}
+
+// MARK: - Private Methods
+
+private extension AnalyticsViewController {
     private func setupMainView() {
         addSubviews()
         setupConstraints()
@@ -164,7 +205,6 @@ final class AnalyticsViewController: UIViewController {
         view.addSubview(enterDataButton)
         view.addSubview(progressView)
         progressView.addSubview(userPointsLabel)
-
     }
 
     private func setupConstraints() {
@@ -196,6 +236,8 @@ final class AnalyticsViewController: UIViewController {
             strikeStack.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
 
             enterDataButton.topAnchor.constraint(equalTo: strikeStack.bottomAnchor, constant: 26),
+            enterDataButton.heightAnchor.constraint(equalToConstant: 60),
+            enterDataButton.widthAnchor.constraint(equalToConstant: 200),
             enterDataButton.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
 
             progressView.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
@@ -210,35 +252,21 @@ final class AnalyticsViewController: UIViewController {
     }
 
     private func updateProgressView() {
-        userPointsLabel.text = "\(analyticsVM.userPoints)"
-        userPointsLabel.textColor = analyticsVM.userPoints > (analyticsVM.targetPoints / 2) ? .white : .systemOrange
-        progressView.setProgress(analyticsVM.progress, animated: true)
+        userPointsLabel.text = analyticsViewModel.userPoints.description
+        userPointsLabel.textColor = analyticsViewModel.pointsIsMoreThenHalf ? .white : .systemOrange
+        progressView.setProgress(analyticsViewModel.progress, animated: true)
     }
 
     private func updateMultiplierLabel() {
-        multiplierLabel.text = analyticsVM.userStrikes.description + "X"
+        multiplierLabel.text = analyticsViewModel.userStrikesDescription
     }
+}
 
-    // MARK: - Actions
-    @objc private func cancelButtonTapped() {
-        dismiss(animated: true, completion: nil)
-    }
+// MARK: - Touches Began
 
-    @objc private func enterDataButtonTupped() {
-
-        guard let squats = squatsTextField.text, let squats = Int(squats),
-              let distance = distanceTextField.text, let distance = Int(distance) else { return }
-
-        let userWeight = analyticsVM.userWeight
-
-        analyticsVM.userPoints += analyticsVM.countPoints(withSquats: squats, distance: distance, andUserWeight: userWeight)
-        analyticsVM.userStrikes += 1
-        analyticsVM.saveUserModel(userName: UserSettings.userModel.name,
-                                  userWeight: UserSettings.userModel.weight,
-                                  userHeight: UserSettings.userModel.height,
-                                  userPoints: analyticsVM.userPoints,
-                                  userStrike: analyticsVM.userStrikes)
-        updateMultiplierLabel()
-        updateProgressView()
+extension AnalyticsViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super .touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
 }

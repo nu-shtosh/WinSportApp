@@ -12,7 +12,7 @@ final class MainMenuViewController: UIViewController {
 
     // MARK: - View Model
 
-    private let mainMenuVM = MainMenuViewModel()
+    private let mainMenuViewModel = MainMenuViewModel()
 
     // MARK: - UIElements
 
@@ -54,7 +54,7 @@ final class MainMenuViewController: UIViewController {
     }()
 
     private lazy var trainingButton: UIButton = {
-        let button = Components.setupCustomButton(withTitle: "ТРЕНЕРОВКА")
+        let button = Components.setupCustomButton(withTitle: "ТРЕНИРОВКА")
         button.addTarget(self,
                          action: #selector(trainingButtonTapped),
                          for: .touchUpInside)
@@ -100,7 +100,7 @@ final class MainMenuViewController: UIViewController {
     }()
 
     private lazy var pointsAmountLabel: UILabel = {
-        Components.setupCustomLabel(withText: mainMenuVM.targetPoints.description,
+        Components.setupCustomLabel(withText: mainMenuViewModel.targetPoints.description,
                                     color: UIColor.orange,
                                     size: 30)
     }()
@@ -151,7 +151,37 @@ final class MainMenuViewController: UIViewController {
         }
     }
 
-    // MARK: - Private Methods
+
+
+    // MARK: - Actions
+    @objc private func trainingButtonTapped() {
+        let trainingVC = TrainingViewController()
+        trainingVC.modalPresentationStyle = .fullScreen
+        present(trainingVC, animated: true)
+    }
+
+    @objc private func analyticsButtonTapped() {
+        let analyticsVC = AnalyticsViewController()
+        analyticsVC.modalPresentationStyle = .fullScreen
+        present(analyticsVC, animated: true)
+    }
+
+    @objc private func questionButtonTapped() {
+        let questionVC = QuestionViewController()
+        questionVC.modalPresentationStyle = .fullScreen
+        present(questionVC, animated: true)
+    }
+
+    @objc private func settingsButtonTapped() {
+        let settingsVC = SettingsViewController()
+        settingsVC.modalPresentationStyle = .fullScreen
+        present(settingsVC, animated: true)
+    }
+}
+
+// MARK: - Private Methods
+
+private extension MainMenuViewController {
 
     private func setupMainView() {
         addSubviews()
@@ -201,33 +231,8 @@ final class MainMenuViewController: UIViewController {
     }
 
     private func updateProgressView() {
-        userPointsLabel.text = "\(mainMenuVM.userPoints)"
-        userPointsLabel.textColor = mainMenuVM.userPoints > (mainMenuVM.targetPoints / 2) ? .white : .systemOrange
-        progressView.setProgress(mainMenuVM.progress, animated: true)
-    }
-
-    // MARK: - Actions
-    @objc private func trainingButtonTapped() {
-        let trainingVC = TrainingViewController()
-        trainingVC.modalPresentationStyle = .fullScreen
-        present(trainingVC, animated: true)
-    }
-
-    @objc private func analyticsButtonTapped() {
-        let analyticsVC = AnalyticsViewController()
-        analyticsVC.modalPresentationStyle = .fullScreen
-        present(analyticsVC, animated: true)
-    }
-
-    @objc private func questionButtonTapped() {
-        let questionVC = QuestionViewController()
-        questionVC.modalPresentationStyle = .fullScreen
-        present(questionVC, animated: true)
-    }
-
-    @objc private func settingsButtonTapped() {
-        let settingsVC = SettingsViewController()
-        settingsVC.modalPresentationStyle = .fullScreen
-        present(settingsVC, animated: true)
+        userPointsLabel.text = "\(mainMenuViewModel.userPoints)"
+        userPointsLabel.textColor = mainMenuViewModel.userPoints > (mainMenuViewModel.targetPoints / 2) ? .white : .systemOrange
+        progressView.setProgress(mainMenuViewModel.progress, animated: true)
     }
 }
