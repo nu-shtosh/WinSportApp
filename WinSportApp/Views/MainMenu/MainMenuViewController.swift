@@ -205,10 +205,12 @@ private extension MainMenuViewController {
             backView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            winSportStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            winSportStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                               constant: Constants.sixteen),
             winSportStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            buttonsStack.topAnchor.constraint(equalTo: winSportStack.bottomAnchor, constant: 40),
+            buttonsStack.topAnchor.constraint(equalTo: winSportStack.bottomAnchor,
+                                              constant: Constants.forty),
             buttonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonsStack.widthAnchor.constraint(equalToConstant: Constants.screen.width * 0.7),
             buttonsStack.heightAnchor.constraint(equalToConstant: Constants.screen.height * 0.3),
@@ -216,13 +218,17 @@ private extension MainMenuViewController {
             dayTargetLabel.topAnchor.constraint(equalTo: buttonsStack.bottomAnchor, constant: 60),
             dayTargetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            targetPointsStack.topAnchor.constraint(equalTo: dayTargetLabel.bottomAnchor, constant: 16),
+            targetPointsStack.topAnchor.constraint(equalTo: dayTargetLabel.bottomAnchor,
+                                                   constant: Constants.sixteen),
             targetPointsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
             progressView.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
-            progressView.topAnchor.constraint(equalTo: targetPointsStack.bottomAnchor, constant: 16),
-            progressView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 16),
-            progressView.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -16),
+            progressView.topAnchor.constraint(equalTo: targetPointsStack.bottomAnchor,
+                                              constant: Constants.sixteen),
+            progressView.leadingAnchor.constraint(equalTo: backView.leadingAnchor,
+                                                  constant: Constants.sixteen),
+            progressView.trailingAnchor.constraint(equalTo: backView.trailingAnchor,
+                                                   constant: -Constants.sixteen),
             progressView.heightAnchor.constraint(equalToConstant: 20),
 
             userPointsLabel.centerXAnchor.constraint(equalTo: progressView.centerXAnchor),

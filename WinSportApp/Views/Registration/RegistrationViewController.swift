@@ -155,11 +155,14 @@ private extension RegistrationViewController {
             backView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            winSportStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            winSportStack.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 16),
+            winSportStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                               constant: Constants.sixteen),
+            winSportStack.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                                   constant: Constants.sixteen),
 
             beginTrainingLabel.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
-            beginTrainingLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            beginTrainingLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                                    constant: Constants.forty),
             beginTrainingLabel.widthAnchor.constraint(equalToConstant: 180),
 
             textFieldsStack.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
@@ -169,8 +172,9 @@ private extension RegistrationViewController {
             textFieldsStack.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -26),
 
             startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startButton.topAnchor.constraint(equalTo: textFieldsStack.bottomAnchor, constant: 20),
-            startButton.widthAnchor.constraint(equalToConstant: 160),
+            startButton.topAnchor.constraint(equalTo: textFieldsStack.bottomAnchor,
+                                             constant: Constants.sixteen),
+            startButton.widthAnchor.constraint(equalToConstant: Constants.sixteen0),
             startButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }

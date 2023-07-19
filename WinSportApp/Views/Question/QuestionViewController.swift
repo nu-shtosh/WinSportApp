@@ -99,7 +99,7 @@ final class QuestionViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.font = .systemFont(ofSize: Constants.sixteen, weight: .bold)
         label.numberOfLines = .max
         label.textAlignment = .left
         return label
@@ -161,28 +161,28 @@ private extension QuestionViewController {
             backView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            cancelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            cancelButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            cancelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.sixteen),
+            cancelButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.sixteen),
 
-            winSportStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            winSportStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.sixteen),
             winSportStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
             questionLabel.topAnchor.constraint(equalTo: winLabel.bottomAnchor, constant: 36),
             questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            questionTextField.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 16),
-            questionTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            questionTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            questionTextField.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: Constants.sixteen),
+            questionTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.sixteen),
+            questionTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.sixteen),
             questionTextField.heightAnchor.constraint(equalToConstant: 80),
 
-            blurView.topAnchor.constraint(equalTo: questionTextField.bottomAnchor, constant: 16),
-            blurView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            blurView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            blurView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
+            blurView.topAnchor.constraint(equalTo: questionTextField.bottomAnchor, constant: Constants.sixteen),
+            blurView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.sixteen),
+            blurView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.sixteen),
+            blurView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Constants.sixteen),
 
-            responseLabel.topAnchor.constraint(equalTo: blurView.topAnchor, constant: 16),
-            responseLabel.leadingAnchor.constraint(equalTo: blurView.leadingAnchor, constant: 16),
-            responseLabel.trailingAnchor.constraint(equalTo: blurView.trailingAnchor, constant: -16),
+            responseLabel.topAnchor.constraint(equalTo: blurView.topAnchor, constant: Constants.sixteen),
+            responseLabel.leadingAnchor.constraint(equalTo: blurView.leadingAnchor, constant: Constants.sixteen),
+            responseLabel.trailingAnchor.constraint(equalTo: blurView.trailingAnchor, constant: -Constants.sixteen),
         ])
     }
 }

@@ -55,9 +55,12 @@ enum Constants {
 
     static let screen = UIScreen.main.bounds
     static let cornerRadius = 8.0
-    static let weekdayUrl = "http://84.38.181.162/ios/\(getCurrentWeekdayEnglish()).json"
-    static let askUrl = "http://84.38.181.162/ios/ask.php"
-    static let responseUrl = "http://84.38.181.162/ios/response.php?id="
+    static let weekdayUrl = "http://84.38.181.Constants.sixteen2/ios/\(getCurrentWeekdayEnglish()).json"
+    static let askUrl = "http://84.38.181.Constants.sixteen2/ios/ask.php"
+    static let responseUrl = "http://84.38.181.Constants.sixteen2/ios/response.php?id="
+    static let eight = 8.0
+    static let sixteen = Constants.sixteen.0
+    static let forty = 40.0
 }
 
 enum NetworkError: String, Error {

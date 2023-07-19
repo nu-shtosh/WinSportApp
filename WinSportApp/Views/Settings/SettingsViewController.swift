@@ -134,23 +134,23 @@ final class SettingsViewController: UIViewController {
             backView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            cancelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            cancelButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            cancelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.sixteen),
+            cancelButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.sixteen),
 
-            winSportStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            winSportStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.sixteen),
             winSportStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
             settingsLabel.topAnchor.constraint(equalTo: winLabel.bottomAnchor, constant: 36),
             settingsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
             notificationLabel.topAnchor.constraint(equalTo: settingsLabel.bottomAnchor, constant: 36),
-            notificationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            notificationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.sixteen),
 
             notificationSwitch.centerYAnchor.constraint(equalTo: notificationLabel.centerYAnchor),
-            notificationSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            notificationSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.sixteen),
 
-            clearUserDefaultsButton.topAnchor.constraint(equalTo: notificationLabel.bottomAnchor, constant: 16),
-            clearUserDefaultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            clearUserDefaultsButton.topAnchor.constraint(equalTo: notificationLabel.bottomAnchor, constant: Constants.sixteen),
+            clearUserDefaultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.sixteen),
             clearUserDefaultsButton.widthAnchor.constraint(equalToConstant: 200),
         ])
     }

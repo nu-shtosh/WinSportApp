@@ -99,10 +99,13 @@ private extension LoadingViewController {
             winSportStack.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
 
             loadingView.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
-            loadingView.topAnchor.constraint(equalTo: winSportStack.bottomAnchor, constant: 8),
-            loadingView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 40),
-            loadingView.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -40),
-            loadingView.heightAnchor.constraint(equalToConstant: 20),
+            loadingView.topAnchor.constraint(equalTo: winSportStack.bottomAnchor,
+                                             constant: Constants.eight),
+            loadingView.leadingAnchor.constraint(equalTo: backView.leadingAnchor,
+                                                 constant: Constants.forty),
+            loadingView.trailingAnchor.constraint(equalTo: backView.trailingAnchor,
+                                                  constant: -Constants.forty),
+            loadingView.heightAnchor.constraint(equalToConstant: Constants.sixteen),
 
             loadingInfoLabel.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
             loadingInfoLabel.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor)

@@ -2,7 +2,7 @@
 //  FullScreenTextViewController.swift
 //  WinSportApp
 //
-//  Created by Илья Дубенский on 16.07.2023.
+//  Created by Илья Дубенский on Constants.sixteen.07.2023.
 //
 
 import UIKit
@@ -79,13 +79,18 @@ private extension FullScreenTextViewController {
             backView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            cancelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            cancelButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            cancelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                                  constant: Constants.sixteen),
+            cancelButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                              constant: Constants.sixteen),
 
             trainingTextView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
-            trainingTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            trainingTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            trainingTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
+            trainingTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor
+                                                      , constant: Constants.sixteen),
+            trainingTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                       constant: -Constants.sixteen),
+            trainingTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor,
+                                                     constant: -Constants.sixteen),
         ])
     }
 

@@ -2,7 +2,7 @@
 //  NetworkManager.swift
 //  WinSportApp
 //
-//  Created by Илья Дубенский on 16.07.2023.
+//  Created by Илья Дубенский on Constants.sixteen.07.2023.
 //
 
 import Foundation
