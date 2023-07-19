@@ -9,6 +9,8 @@ import UIKit
 
 
 final class RegistrationViewModel {
+    
+    private let scheduler = DailyTaskScheduler()
 
     func validateFields(fields: [(UITextField, String)]) -> Bool {
         var isValid = true

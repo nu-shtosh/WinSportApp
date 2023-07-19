@@ -40,7 +40,6 @@
 		B8F2B9AE2A66C071000E98EE /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B8F2B9A72A66C071000E98EE /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8F2B9B52A66C151000E98EE /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = B8F2B9B42A66C151000E98EE /* OneSignal */; };
 		B8F2B9B72A66C151000E98EE /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = B8F2B9B62A66C151000E98EE /* OneSignalExtension */; };
-		B8F2B9B82A681AA3000E98EE /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C46D242A615D4B00C777D2 /* AnalyticsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -436,7 +435,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8F2B9AA2A66C071000E98EE /* NotificationService.swift in Sources */,
-				B8F2B9B82A681AA3000E98EE /* AnalyticsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,13 +7,10 @@
 
 import Foundation
 
-import Foundation
-
-class DailyTaskScheduler {
+final class DailyTaskScheduler {
 
     private var timer: Timer?
 
-    // Задайте желаемое время для выполнения функции в конце дня (например, 23:59).
     private let targetHour: Int = 23
     private let targetMinute: Int = 59
 
